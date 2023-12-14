@@ -17,12 +17,12 @@ export default function EditNote(props) {
     return (
         <>
         <Head title="Notes" />            
-            <Navbar></Navbar>
+            <Navbar author={props.auth}></Navbar>
             <div className="font-mono flex flex-col items-center min-h-screen">
                 <h1 className="text-3xl ml-16 mt-4">Edit A Note</h1>
                 <div className="card w-1/2 bg-base-100 shadow-xl p-3 static">
-                    <form action="" method="post">
-                        <input type="hidden" name="" value={id} />
+                    <form action={`/note/edit/${id}`} method="post">
+                        <input type="hidden" name="id" value={id} />
                         <label htmlFor="title">
                             Title
                             <input

@@ -27,15 +27,15 @@ use Inertia\Inertia;
 // });
 
 
-Route::get('/', [NoteController::class, 'index']);
+Route::get('/', [NoteController::class, 'index'])->name('home');
 
 Route::get('/new', function(){
     return Inertia::render('Notes/AddNote');
-});
+})->name('note.new');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::post('/note', [NoteController::class, 'store']);
 Route::get('/note/edit/{id}', [NoteController::class, 'edit']);
 
 Route::post('/note/edit/{id}', [NoteController::class, 'update']);
@@ -44,6 +44,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function(){
+    // Route::get('/', [NoteController::class, 'index'])->name('home');
 });
 
 require __DIR__.'/auth.php';

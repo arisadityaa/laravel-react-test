@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard({ auth }) {
     return (
@@ -15,6 +15,9 @@ export default function Dashboard({ auth }) {
                         <div className="p-6 text-gray-900">You're logged in!</div>
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-center items-center">
+            <Link href='/' className="btn btn-primary">Show All Notes</Link>
             </div>
         </AuthenticatedLayout>
     );
