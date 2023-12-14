@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,8 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function(){
-    return Inertia::render('Home/Homepage');
-});
+
+Route::get('/', [NoteController::class, 'index']);
 
 Route::get('/new', function(){
     return Inertia::render('Notes/AddNote');
@@ -35,6 +35,10 @@ Route::get('/new', function(){
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/note/edit/{id}', [NoteController::class, 'edit']);
+
+Route::post('/note/edit/{id}', [NoteController::class, 'update']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
