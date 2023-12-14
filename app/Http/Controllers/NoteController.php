@@ -22,4 +22,15 @@ class NoteController extends Controller
         $note = Note::find($id);
         return Inertia::render('Notes/EditNote', ['note'=>$note]);
     }
+
+    public function update(Request $request){
+        $data = Note::find($request->id);
+        $data->update($request->all());
+        return redirect()->route('home');
+    }
+
+    public function destroy($id){
+        Note::find($id)->delete();
+        return redirect()->route('home');
+    }
 }

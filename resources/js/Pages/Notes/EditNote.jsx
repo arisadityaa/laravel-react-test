@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { Head } from "@inertiajs/react";
+import { Head, router } from "@inertiajs/react";
 
 export default function EditNote(props) {
     // console.log(props);
@@ -12,6 +12,9 @@ export default function EditNote(props) {
     const submitData = (e) =>{
         e.preventDefault()
         console.log(e);
+        let path = `/note/edit/${id}`
+        const data = {id, title, notes}
+        router.put(path, data)
     }
 
     return (
@@ -21,7 +24,7 @@ export default function EditNote(props) {
             <div className="font-mono flex flex-col items-center min-h-screen">
                 <h1 className="text-3xl ml-16 mt-4">Edit A Note</h1>
                 <div className="card w-1/2 bg-base-100 shadow-xl p-3 static">
-                    <form action={`/note/edit/${id}`} method="post">
+                    <form onSubmit={(e)=>submitData(e)}>
                         <input type="hidden" name="id" value={id} />
                         <label htmlFor="title">
                             Title
@@ -48,7 +51,7 @@ export default function EditNote(props) {
                         <div className="flex items-center justify-center">
                             <button
                                 className="btn btn-warning mt-3"
-                                type="submit" onClick={(e)=>submitData(e)}
+                                type="submit"
                             >
                                 Edit The Notess
                             </button>

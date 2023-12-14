@@ -38,7 +38,7 @@ Route::get('/dashboard', function () {
 Route::post('/note', [NoteController::class, 'store']);
 Route::get('/note/edit/{id}', [NoteController::class, 'edit']);
 
-Route::post('/note/edit/{id}', [NoteController::class, 'update']);
+Route::put('/note/edit/{id}', [NoteController::class, 'update']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function(){
-    // Route::get('/', [NoteController::class, 'index'])->name('home');
+    Route::delete('/note/{id}', [NoteController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';

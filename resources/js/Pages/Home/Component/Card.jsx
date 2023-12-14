@@ -1,5 +1,5 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, router } from "@inertiajs/react";
 
 export default function Card({ data }) {
     let note = data.note;
@@ -12,6 +12,12 @@ export default function Card({ data }) {
         month: "long",
         day: "numeric",
     });
+    const deleteData = (e) =>{
+        e.preventDefault()
+        if(confirm('Are you sure')){
+            router.delete(`/note/${id}`)
+        }
+    }
     console.log(formattedDate);
     return (
         <>
@@ -34,6 +40,7 @@ export default function Card({ data }) {
                             Edit
                         </a>
                         <button
+                        onClick={(e)=>deleteData(e)}
                             type="button"
                             className="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                         >
