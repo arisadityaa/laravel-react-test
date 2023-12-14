@@ -9,6 +9,11 @@ export default function EditNote(props) {
     const [notes, setNotes] = useState(props.note.notes);
     const [title, setTitle] = useState(props.note.title);
 
+    const submitData = (e) =>{
+        e.preventDefault()
+        console.log(e);
+    }
+
     return (
         <>
         <Head title="Notes" />            
@@ -43,7 +48,7 @@ export default function EditNote(props) {
                         <div className="flex items-center justify-center">
                             <button
                                 className="btn btn-warning mt-3"
-                                type="submit"
+                                type="submit" onClick={(e)=>submitData(e)}
                             >
                                 Edit The Note
                             </button>
