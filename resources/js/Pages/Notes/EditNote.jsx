@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import { Head } from "@inertiajs/react";
 
 export default function EditNote(props) {
     // console.log(props);
@@ -10,7 +11,7 @@ export default function EditNote(props) {
 
     return (
         <>
-            <Head title="Dashboard" />
+        <Head title="Notes" />            
             <Navbar></Navbar>
             <div className="font-mono flex flex-col items-center min-h-screen">
                 <h1 className="text-3xl ml-16 mt-4">Edit A Note</h1>

@@ -6,8 +6,6 @@ import Footer from "../Footer/Footer";
 
 export default function Homepage(props) {
     let {note} = props
-    // console.log(note);
-    let data = [1, 1, 1, 1,];
     return (
         <>
         <Head title="Notes" />
