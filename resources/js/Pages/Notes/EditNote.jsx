@@ -50,7 +50,7 @@ export default function EditNote(props) {
                                 className="btn btn-warning mt-3"
                                 type="submit" onClick={(e)=>submitData(e)}
                             >
-                                Edit The Note
+                                Edit The Notess
                             </button>
                         </div>
                     </form>
