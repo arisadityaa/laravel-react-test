@@ -10,7 +10,7 @@ class NoteController extends Controller
 {
     //
     public function index(){
-        $note = Note::orderBy('created_at', 'desc')->limit(9)->get();
+        $note = Note::with('user')->orderBy('created_at', 'desc')->paginate(9);
         return Inertia::render('Home/Homepage', ['note'=>$note]);
     }
     public function store(Request $request){

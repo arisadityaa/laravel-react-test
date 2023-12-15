@@ -5,6 +5,7 @@ export default function Card({ data }) {
     let note = data.note;
     let isUser = data.user;
     let { id, user_id, title, created_at, notes } = note;
+    let {name} = note.user
     const date = new Date(created_at);
     const formattedDate = date.toLocaleDateString("en-GB", {
         weekday: "long",
@@ -18,12 +19,12 @@ export default function Card({ data }) {
             router.delete(`/note/${id}`)
         }
     }
-    console.log(formattedDate);
+    // console.log(data);
     return (
         <>
-            <div className="w-full max-w-md p-2 pl-6 bg-cyan-600 rounded shadow-2xl shadow-teal-500/90">
-                <h1 className="text-center">{title}</h1>
-                <p className="mt-2 text-slate-800">From: {user_id}</p>
+            <div className="w-full p-2 pl-6 bg-cyan-600 rounded shadow-2xl shadow-teal-500/90 hover:opacity-80">
+                <h1 className="text-center font-bold">{title}</h1>
+                <p className="mt-2 text-slate-800">From: {name}</p>
                 <p className="mt-2 text-gray-600">{formattedDate}</p>
                 <p className="mt-2">{notes}</p>
                 {!isUser ? (

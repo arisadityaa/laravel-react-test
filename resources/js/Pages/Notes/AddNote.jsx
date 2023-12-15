@@ -12,7 +12,6 @@ export default function AddNote(props) {
         e.preventDefault()
         const data = {user_id, title, notes}
         router.post('/note', data)
-
     }
 
     return (

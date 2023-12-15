@@ -50,4 +50,8 @@ Route::middleware('auth')->group(function(){
     Route::delete('/note/{id}', [NoteController::class, 'destroy']);
 });
 
+Route::get('/about', function(){
+    return Inertia::render('About/About');
+})->name('about');
+
 require __DIR__.'/auth.php';

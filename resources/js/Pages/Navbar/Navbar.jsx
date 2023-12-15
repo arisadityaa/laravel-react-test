@@ -20,18 +20,18 @@ export default function ({ author }) {
                                 Dashboard
                             </Link>
                         )}
-                        <a
-                            href="/"
+                        <Link
+                            href={route("home")}
                             className="text-stone-800 hover:brightness-200"
                         >
                             Home
-                        </a>
-                        <a
-                            href="/"
+                        </Link>
+                        <Link
+                            href={route("about")}
                             className="text-stone-800 hover:brightness-200"
                         >
                             About
-                        </a>
+                        </Link>
                     </div>
 
                     <ul className="menu menu-horizontal px-1">
