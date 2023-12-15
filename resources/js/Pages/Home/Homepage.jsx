@@ -19,8 +19,8 @@ export default function Homepage(props) {
                 <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-10 mt-5">
                     {note.map((data, i)=> <Card data={{"note":data, "user": props.auth.user}} key={i}></Card>)}
                 </div>
-            </div>
             <Pagination data={props.note}></Pagination>
+            </div>
             <Footer></Footer>
         </>
     );
